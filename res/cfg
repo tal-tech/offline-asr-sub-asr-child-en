@@ -1,0 +1,49 @@
+version="en.asr.Pgen.Achr.V0.2.2";
+use_nnet3=1;
+language="en";
+
+FEA={
+	use_fbank=1;
+	window_type="hamming";
+	use_energy=0;
+	dither=1;
+	num_mel_bins=80;
+
+	frame_length_ms=25;
+	frame_shift_ms =10;
+
+	use_pitch=1;
+	apply_cmvn=0;
+}
+
+REC={
+	min_active=200;
+	max_active=7000;
+	max_mem=50000000;
+	beam=13.5;
+	lattice_beam=2.0;
+	acoustic_scale=1.0;
+	allow_partial=true;
+	word_syms_filename=${pwd}/words.txt;
+	model_in_filename=${pwd}/final.mdl;
+	fst_in_str=${pwd}/HCLG.fst;
+	phn_syms_filename=${pwd}/phones.txt;
+	dict_name=${pwd}/lexicon.txt;
+
+	#nnet3
+	frame_subsampling_factor=3;
+
+	use_timeinfo=1;
+	add_space=1;
+	add_punc=0;
+	nbest=1;
+	hot_word_global_weight=5;
+	hot_word_nbest=10;
+	hot_word_nbest_reorder=1;
+	exclude_hotwords_file=${pwd}/exclude_hotwords.txt;
+
+	use_scripts=1;
+ 	inv_acoustic_scale=11;
+	word_penalty=1.0;
+	lat_acoustic_scale=10.0;
+}
